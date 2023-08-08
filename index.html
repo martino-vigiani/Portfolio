@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Martino Vigiani</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <style>
+        :root {
+            /*
+                Colori:
+                    --rgb(2, 0, 17)
+                    --rgb(0, 153, 235)
+                    --rgb(235, 0, 98)
+                    
+            */
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+        }
+
+        .body {
+            width: 100vw;
+            height: 280vh;
+            background-color: rgb(2, 0, 17);
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .menu {
+            width: 100vw;
+            height: 100vh;
+            background-color: rgb(2, 0, 17);
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .menuBar-tendina {
+            display: none;
+        }
+
+        .menuBar {
+            width: 100px;
+            height: 75%;
+            background-color: rgb(2, 0, 17);
+            position: absolute;
+            left: 60px;
+            border-radius: 20px;
+            box-shadow: rgba(0, 153, 235, 0.25) 0px 54px 55px, rgba(0, 153, 235, 0.25) 0px -12px 30px, rgba(0, 153, 235, 0.25) 0px 4px 6px, rgba(0, 153, 235, 0.17) 0px 12px 13px, rgba(0, 153, 235, 0.09) 0px -3px 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+        }
+
+        .menuBar .ul .li {
+            margin: 25px;
+        }
+
+        .icona {
+            position: absolute;
+            top: 0;
+            margin: 10px;
+        }
+
+        .icona img {
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+            box-shadow: rgba(235, 0, 98, 0.25) 0px 54px 55px, rgba(235, 0, 98, 0.25) 0px -12px 30px, rgba(235, 0, 98, 0.25) 0px 4px 6px, rgba(235, 0, 98, 0.17) 0px 12px 13px, rgba(235, 0, 98, 0.09) 0px -3px 5px;
+            transition: ease-in-out .4s;
+        }
+
+        .icona img:hover {
+            width: 90px;
+            height: 90px;
+        }
+
+        li {
+            margin: 120px 0 120px 0;
+            /* ^ Basso - Destra - Alto - Sinistra  */
+            list-style-type: none;
+        }
+
+        a {
+            text-decoration: none;
+            cursor: pointer;
+            color: white;
+            transition: ease-in .3s;
+            font-size: 20px;
+        }
+
+        a:hover {
+            background-color: rgb(0, 153, 235);
+            padding: 4px;
+            border-radius: 5px;
+        }
+
+        .titolo {
+            margin: 0 auto;
+            width: 600px;
+            border-radius: 10px;
+            padding: 15px;
+            font-size: 60px;
+            box-shadow: rgba(235, 0, 98, 0.25) 0px 54px 55px, rgba(235, 0, 98, 0.25) 0px -12px 30px, rgba(235, 0, 98, 0.25) 0px 4px 6px, rgba(235, 0, 98, 0.17) 0px 12px 13px, rgba(235, 0, 98, 0.09) 0px -3px 5px;
+        }
+
+        .hackTriangle {
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+
+            border-bottom: 15px solid white;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            transition: 0.3s ease-in-out;
+            transform: rotate(0deg);
+        }
+
+        .hackTriangle:hover {
+            cursor: pointer;
+            transform: rotate(360deg);
+        }
+
+        .hackTriangle:hover .hack {
+            display: block;
+        }
+
+        .hack {
+            position: absolute;
+            top: 45px;
+            right: 45px;
+            font-size: 20px;
+            width: 200px;
+            display: none;
+        }
+
+        #ctrlc {
+            color: rgb(235, 0, 98);
+        }
+
+        #ctrlv {
+            color: rgb(0, 153, 235);
+        }
+
+        #nome {
+            color: rgb(235, 0, 98);
+        }
+
+        #web-dev {
+            color: rgb(0, 153, 235);
+        }
+
+        .menuRes {
+            display: none;
+        }
+
+        .treBarreBtn {
+            display: none;
+        }
+
+        .immagineDiv {
+            display: none;
+        }
+
+        .continuo-pagina {
+            height: 100vh;
+            width: 100%;
+            background-color: rgb(2, 0, 17);
+            padding: 5px;
+            margin: 0 auto;
+        }
+
+        .continuo-pagina h2 {
+            font-size: 60px;
+            margin-left: 15px;
+        }
+
+        .continuo-pagina .aboutMe p {
+            font-size: 20px;
+            margin-top: 35px;
+            margin-left: 35px;
+        }
+
+        .continuo-pagina #me {
+            color: #00F2E0;
+        }
+
+        #paragrafoAbMe {
+            color: rgb(0, 153, 235);
+            font-size: 115%;
+        }
+
+        .continuo-pagina .skills {
+            margin-top: 90px;
+        }
+
+        .continuo-pagina .skills h2 {
+            margin-left: 15px;
+        }
+
+        .continuo-pagina .skills label,
+        progress {
+            font-size: 20px;
+            margin-bottom: 20px;
+            margin-left: 40px;
+        }
+
+        .continuo-pagina .skills label {
+            margin-top: 35px;
+        }
+
+        progress {
+            height: 20px;
+        }
+
+        .continuo-pagina h3 {
+            margin-bottom: 20px;
+            margin-left: 30px;
+            font-size: 130%;
+
+        }
+
+        .continuo-pagina .lingue h4 {
+            margin-left: 35px;
+            font-size: 130%;
+        }
+
+        .continuo-pagina .lingue p {
+            margin-left: 40px;
+            font-size: 130%;
+        }
+
+        .footer {
+            margin-top: 40px;
+            width: 100%;
+            height: 140px;
+            background-color: red;
+        }
+
+        @media screen and (max-width: 1005px) {
+            .body {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .hackTriangle {
+                display: none;
+            }
+
+            .hack {
+                display: none;
+            }
+
+            .menuBar {
+                position: absolute;
+                top: 25px;
+                height: 100px;
+                width: 75%;
+                left: auto;
+                background-color: rgb(2, 0, 17);
+                border-radius: 20px;
+                box-shadow: rgba(0, 153, 235, 0.25) 0px 54px 55px, rgba(0, 153, 235, 0.25) 0px -12px 30px, rgba(0, 153, 235, 0.25) 0px 4px 6px, rgba(0, 153, 235, 0.17) 0px 12px 13px, rgba(0, 153, 235, 0.09) 0px -3px 5px;
+                padding: 5px;
+                display: flex;
+                align-items: center;
+            }
+
+            .menuBar ul li {
+                margin: 25px;
+                display: inline-block;
+                list-style-type: none;
+            }
+
+            .menuBar ul {
+                position: relative;
+            }
+
+            .link {
+                position: absolute;
+                right: 20px;
+            }
+
+            .icona {
+                position: absolute;
+                top: 0;
+                margin: 10px;
+                left: 0;
+            }
+
+            .icona img {
+                height: 80px;
+                width: 80px;
+                border-radius: 50%;
+                box-shadow: rgba(235, 0, 98, 0.25) 0px 54px 55px, rgba(235, 0, 98, 0.25) 0px -12px 30px, rgba(235, 0, 98, 0.25) 0px 4px 6px, rgba(235, 0, 98, 0.17) 0px 12px 13px, rgba(235, 0, 98, 0.09) 0px -3px 5px;
+                transition: ease-in-out .4s;
+            }
+
+            .icona img:hover {
+                width: 80px;
+                height: 80px;
+            }
+        }
+
+        @media screen and (max-width: 755px) {
+
+            /*
+                Fare il Menù a bottone, rimpicciolire il div che dice che sono un Web Developer etc.., display: none -> menù normale
+            */
+            .menuBar {
+                display: none;
+            }
+
+            .treBarreBtn {
+                display: block;
+                width: 50px;
+                height: 50px;
+                background-color: gray;
+                color: black;
+                position: absolute;
+                top: 40px;
+                right: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 10px;
+                box-shadow: gray 0px 5px 15px;
+            }
+
+            .treBarreBtn img {
+                width: 40px;
+                height: 40px;
+                cursor: pointer;
+            }
+
+            .menuRes {
+                width: 100%;
+                height: 80%;
+                justify-content: center;
+                flex-wrap: wrap;
+                background-color: #2C2C2C;
+            }
+
+            .menuRes .immagineDiv {
+                position: relative;
+                top: 0;
+                width: 100%;
+                height: 20%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .menuRes .immagineDiv img {
+                position: relative;
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+            }
+
+            .menuRes .lista {
+                width: 100%;
+                height: 80%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            li a {
+                font-size: 30px;
+            }
+        }
+
+        /* Fare che quando la width è < 850 i link siano più piccoli e il margine tra i vari link è minore*/
+    </style>
+    <div class="body" id="body">
+        <div class="menu" id="menu">
+            <div id="menuBar" class="menuBar">
+                <div id="icona" class="icona">
+                    <img src="./icona.jpg" alt="icona">
+                </div>
+                <div id="link" class="link">
+                    <ul>
+                        <li><a href="#body">Home</a></li>
+                        <li><a href="#about">About Me</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#footer">Social</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="treBarreBtn" class="treBarreBtn">
+                <img src="./menu.png" alt="Menù" onclick="toggle()" class="immagineMenu">
+            </div>
+            <div id="menuRes" class="menuRes">
+                <div class="immagineDiv" id="immagineDiv">
+                    <img alt="Icona" src="./icona.jpg">
+                </div>
+                <div class="lista">
+                    <ul>
+                        <li><a href="#body">Home</a></li>
+                        <li><a href="#about">About Me</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#footer">Social</a></li>
+                    </ul>
+                </div>
+            </div>
+            <h1 id="titolo" class="titolo">Hi, <br> I'm <span id="nome">Martino</span>,<br> a young <span
+                    id="web-dev">Web
+                    Developer</span></h1>
+            <div id="hackTriangle" class="hackTriangle">
+                <div class="hack" id="hack">The hack that <br> will improve your site? <br>
+                    <hr><strong><span id="ctrlc">ctrl+c</span> & <span id="ctrlv">ctrl+v</span></strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="continuo-pagina">
+            <div class="aboutMe" id="about">
+                <h2>About <span id="me">Me</span>, <span id="me">Myself</span> and <span id="me">I</span></h2>
+                <p><span id="paragrafoAbMe">Ciao</span>, io sono <span id="paragrafoAbMe">Martino</span>, sono un
+                    ragazzo <span id="paragrafoAbMe">Italiano</span> che ormai vive da anni in <span
+                        id="paragrafoAbMe">Germania.</span> <br><br> Mi piace programmare e ho inizato quando avevo 11
+                    anni. <br> In verità ho iniziato sriamente a 12 anni e mezzo ma ad 11 anni ho fatto i <span
+                        id="paragrafoAbMe">primi passi.</span><br><br>Lorem ipsum dolor sit amet, consetetur
+                    sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+                    sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+                    gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+                    consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                    aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+                    clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+            </div>
+            <div class="skills" id="skills">
+                <h2>Skills</h2>
+                <div class="programmazione" id="programmazione">
+                    <h3>Programmazione:</h3>
+                    <label for="html">HTML:</label>
+                    <br>
+                    <progress id="html" value="64" max="100">64%</progress>
+                    <br>
+                    <label for="css">CSS:</label>
+                    <br>
+                    <progress id="css" value="35" max="100">35%</progress>
+                    <br>
+                    <label for="js">JavaScript:</label>
+                    <br>
+                    <progress id="js" value="59" max="100">59%</progress>
+                    <br>
+                    <label for="NodeJs">NodeJs:</label>
+                    <br>
+                    <progress id="NodeJs" value="44" max="100">44%</progress>
+                    <br>
+                    <label for="sql">SQL:</label>
+                    <br>
+                    <progress id="sql" value="34" max="100">34%</progress>
+                </div>
+                <div class="lingue" id="lingue">
+                    <h3>Lingue:</h3>
+                    <h4>Italiano:</h4>
+                    <br>
+                    <p>Madre Lingua - C2</p>
+                    <br>
+                    <h4>Tedesco:</h4>
+                    <br>
+                    <p>Avanzato - B2</p>
+                    <br>
+                    <h4>Inglese</h4>
+                    <br>
+                    <p>Intermedio - B1</p>
+                </div>
+                <div class="itSkills" id="itSkills">
+                    <h3>IT Skills:</h3>
+                    <label for="email">Posta Elettronica/Email:</label>
+                    <br>
+                    <progress id="email" value="84" max="100">84%</progress>
+                    <br>
+                    <label for="word">Word:</label>
+                    <br>
+                    <progress id="word" value="75" max="100">75%</progress>
+                    <br>
+                    <label for="ppx">Powerpoint:</label>
+                    <br>
+                    <progress id="ppx" value="69" max="100">69%</progress>
+                    <br>
+                    <label for="bash">Terminal:</label>
+                    <br>
+                    <progress id="bash" value="47" max="100">47%</progress>
+                </div>
+            </div>
+            <div class="footer" id="footer">
+                <p>©Martino Vigiani</p>
+                <p>Site created by: Martino Vigiani</p>
+                <div class="socials" id="socials">
+                    <a href="https://www.instagram.com/martino.vigiani/">Instagram</a>
+                    <a href="https://www.youtube.com/channel/UCTFTQCgaMQoxNHIOwM_InRA">YouTube</a>
+                    <a href="https://twitter.com/Martino68127861">Twitter</a>
+                </div>
+            </div>
+        </div>
+        <script src="./script.js"></script>
+</body>
+
+</html>
